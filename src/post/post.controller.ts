@@ -14,7 +14,7 @@ import { AppResource } from 'src/app.roles';
 import { PostService } from './post.service';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User, Auth } from 'src/common/decorators';
-import { User as UserEntity } from 'src/user/entities';
+import { User as UserEntity } from '../user/entities';
 
 @ApiTags('Posts')
 @Controller('post')
@@ -59,7 +59,7 @@ export class PostController {
     @Body() dto: EditPostDto,
     @User() author: UserEntity,
   ) {
-    let data;
+    let data: any;
 
     if (
       this.roleBuilder.can(author.roles).updateAny(AppResource.POST).granted
